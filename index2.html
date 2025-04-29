@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Você, Meu Grande Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --primary-dark: #c9184a;
+            --secondary: #ff8fa3;
+            --secondary-light: #ffb3c1;
+            --dark: #590d22;
+            --light: #fff0f3;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--light), #ffccd5);
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            opacity: 0.1;
+            z-index: -2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ribbon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        .ribbon span {
+            position: absolute;
+            display: block;
+            width: 225px;
+            padding: 15px 0;
+            background: var(--primary);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            right: -25px;
+            top: 30px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+            font-size: 3.5rem;
+            margin: 40px 0 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+        }
+        
+        h1::before, h1::after {
+            content: '✧';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+        
+        h1::before {
+            left: -10px;
+        }
+        
+        h1::after {
+            right: -10px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        .header {
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+            padding-top: 30px;
+        }
+        
+        .couple-img-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+            border-radius: 50%;
+            padding: 10px;
+            background: linear-gradient(45deg, var(--gold), var(--silver));
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: rotateBorder 8s linear infinite;
+        }
+        
+        @keyframes rotateBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .couple-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            margin: 50px 0;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: -1;
+            border-radius: 25px;
+            opacity: 0.5;
+            transform: translateZ(-10px);
+            filter: blur(10px);
+        }
+        
+        .message-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            pointer-events: none;
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            color: #333;
+        }
+        
+        .message p {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .message p::before {
+            content: '❤';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            text-align: right;
+            margin-top: 30px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-right: 50px;
+        }
+        
+        .signature::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 15px;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--primary));
+        }
+        
+        .gallery-container {
+            position: relative;
+            margin: 60px 0;
+            padding: 20px 0;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .gallery-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 280px;
+            perspective: 1000px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .music-container {
+            background: linear-gradient(135deg, var(--light), white);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .music-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/notebook.png');
+            opacity: 0.05;
+            z-index: 1;
+        }
+        
+        .music-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .music-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+        }
+        
+        .player-container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: perspective(1000px) rotateX(5deg);
+            transition: all 0.5s ease;
+        }
+        
+        .player-container:hover {
+            transform: perspective(1000px) rotateX(0deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .player {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        
+        .btn-love {
+            display: block;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            margin: 50px auto;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(201, 24, 74, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: bold;
+            width: fit-content;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 2px solid white;
+        }
+        
+        .btn-love::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .btn-love:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(201, 24, 74, 0.4);
+        }
+        
+        .btn-love:hover::before {
+            opacity: 1;
+        }
+        
+        .btn-love span {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-love i {
+            font-size: 1.5rem;
+            animation: beat 1.5s infinite;
+        }
+        
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float-up 15s linear infinite;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--primary);
+            animation: float 8s linear infinite;
+            opacity: 0;
+            filter: drop-shadow(0 0 5px rgba(255, 77, 109, 0.5));
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+        }
+        
+        /* Efeitos especiais para dispositivos não móveis */
+        @media (hover: hover) and (pointer: fine) {
+            .message-box:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            }
+            
+            .gallery-item {
+                transform-style: preserve-3d;
+            }
+            
+            .gallery-item:hover {
+                transform: translateY(-15px) rotateX(5deg) scale(1.03);
+            }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .couple-img-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .message-box {
+                padding: 25px;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .player {
+                height: 250px;
+            }
+            
+            .btn-love {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .couple-img-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .message-box {
+                padding: 20px;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+            
+            .signature {
+                font-size: 2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .music-title {
+                font-size: 2rem;
+            }
+            
+            .player {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ribbon animate__animated animate__fadeInDown">
+        <span>Nosso Amor</span>
+    </div>
+    
+    <div class="floating-elements" id="floatingElements"></div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="container">
+        <div class="header animate__animated animate__fadeIn">
+            <div class="couple-img-container">
+                <img src="./img/foto5.jpeg" alt="Nós dois" class="couple-img">
+            </div>
+            <h1 class="animate__animated animate__fadeInDown">Para Você, Meu Amor</h1>
+        </div>
+        
+        <div class="message-box animate__animated animate__fadeInUp">
+            <div class="message">
+                <p>Minha princesa,</p>
+                <p>Desde o momento em que nossos caminhos se cruzaram, minha vida se transformou em um conto de fadas. Seu sorriso é meu raio de sol, seu abraço meu refúgio seguro, seu amor minha razão de viver.</p>
+                <p>Cada instante ao seu lado é uma página do nosso diário de amor, cheia de risos, cumplicidade e momentos que guardo como tesouros no baú do meu coração.</p>
+                <p>Prometo ser o herói da sua história, o parceiro das suas aventuras, o amor da sua vida. Nos desafios, serei sua fortaleza; nas alegrias, seu maior companheiro de celebração.</p>
+                <p>Nenhum dicionário do mundo possui palavras capazes de expressar a profundidade do que sinto por você. Você é meu hoje e todos os amanhãs que virão.</p>
+                <p>Obrigado por ser a melodia da minha vida, a poesia do meu coração, o amor da minha existência.</p>
+                <div class="signature animate__animated animate__fadeIn">Para sempre seu,<br>Vinicius</div>
+            </div>
+        </div>
+        
+        <button class="btn-love animate__animated animate__pulse animate__infinite" id="btnLove">
+            <span><i>❤</i> Clique para ver o quanto te amo <i>❤</i></span>
+        </button>
+        
+        <div class="gallery-container animate__animated animate__fadeIn">
+            <h2 class="gallery-title">Nossos Momentos</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="./img/foto6.jpeg" alt="Nosso momento" class="gallery-img">
+                    <div class="gallery-caption">Felizes juntos</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/foto2.jpeg" alt="Amo você" class="gallery-img">
+                    <div class="gallery-caption">Nosso sorriso</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/foto4.jpeg" alt="Felizes juntos" class="gallery-img">
+                    <div class="gallery-caption">Amor verdadeiro</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/foto7.jpeg" alt="Nosso amor" class="gallery-img">
+                    <div class="gallery-caption">Eternamente</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="music-container animate__animated animate__fadeIn">
+            <h2 class="music-title">Amar Não É Pecado</h2>
+            <p class="music-subtitle">Luan Santana - A música que representa nosso amor</p>
+            <div class="player-container">
+                <iframe class="player" src="https://www.youtube.com/embed/Xh7bdsJWJCU?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <div class="footer animate__animated animate__fadeIn">
+            <p>Feito com ❤ especialmente para você</p>
+            <p>Vinicius - Nosso amor é eterno</p>
+        </div>
+    </div>
+
+    <script>
+        // Criar elementos flutuantes decorativos
+        function createFloatingElements() {
+            const container = document.getElementById('floatingElements');
+            const elements = ['❀', '✿', '❁', '✽', '✼', '✧', '✦', '♡'];
+            const count = 15;
+            
+            for (let i = 0; i < count; i++) {
+                const element = document.createElement('div');
+                element.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+                element.classList.add('floating-element');
+                
+                // Posição aleatória
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.bottom = '-50px';
+                
+                // Tamanho aleatório
+                const size = Math.random() * 30 + 20;
+                element.style.fontSize = size + 'px';
+                
+                // Cor aleatória
+                const colors = ['#ff4d6d', '#ff8fa3', '#c9184a', '#ff758f'];
+                element.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Duração e delay aleatórios
+                element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                element.style.animationDelay = (Math.random() * 5) + 's';
+                
+                container.appendChild(element);
+            }
+        }
+        
+        // Criar corações flutuantes
+        function createHearts() {
+            const container = document.getElementById('floatingHearts');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.classList.add('floating-heart');
+                
+                // Posição aleatória
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                
+                // Tamanho aleatório
+                const size = Math.random() * 25 + 15;
+                heart.style.fontSize = size + 'px';
+                
+                // Duração e delay aleatórios
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.animationDelay = (Math.random() * 3) + 's';
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Botão especial
+        document.getElementById('btnLove').addEventListener('click', function() {
+            // Criar efeito de confete
+            for (let i = 0; i < 100; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.color = `hsl(${Math.random() * 30 + 340}, 100%, 70%)`;
+                heart.style.zIndex = '1000';
+                heart.style.pointerEvents = 'none';
+                heart.style.animation = `fly-up ${Math.random() * 1 + 0.5}s linear forwards`;
+                
+                document.body.appendChild(heart);
+                
+                // Remover após animação
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+            
+            // Mostrar mensagem especial
+            const messageBox = document.createElement('div');
+            messageBox.style.position = 'fixed';
+            messageBox.style.top = '50%';
+            messageBox.style.left = '50%';
+            messageBox.style.transform = 'translate(-50%, -50%)';
+            messageBox.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            messageBox.style.padding = '30px';
+            messageBox.style.borderRadius = '20px';
+            messageBox.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            messageBox.style.zIndex = '1001';
+            messageBox.style.maxWidth = '80%';
+            messageBox.style.textAlign = 'center';
+            messageBox.style.border = '2px solid #ff4d6d';
+            
+            messageBox.innerHTML = `
+                <h3 style="font-family: 'Dancing Script', cursive; font-size: 2rem; color: #c9184a; margin-bottom: 15px;">Para Você, Meu Amor</h3>
+                <p style="font-size: 1.2rem; line-height: 1.6;">Eu te amo mais que todas as estrelas no céu, mais que todas as areias na praia, mais que todas as histórias de amor já escritas!</p>
+                <p style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: #ff4d6d; margin-top: 15px;">Você é meu tudo ❤</p>
+                <button id="closeBtn" style="background: #ff4d6d; color: white; border: none; padding: 10px 20px; border-radius: 50px; margin-top: 15px; cursor: pointer; font-weight: bold;">Fechar</button>
+            `;
+            
+            document.body.appendChild(messageBox);
+            
+            document.getElementById('closeBtn').addEventListener('click', function() {
+                messageBox.remove();
+            });
+        });
+        
+        // Inicializar
+        window.onload = function() {
+            createFloatingElements();
+            createHearts();
+            
+            // Adicionar estilos dinâmicos
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fly-up {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(-100vh) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Adicionar animação de entrada para elementos
+            const animateElements = document.querySelectorAll('.animate__animated');
+            animateElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, index * 200);
+            });
+        };
+    </script>
+</body>
+</html>

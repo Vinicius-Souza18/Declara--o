@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Você, Meu Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --dark: #590d22;
+            --light: #fff0f3;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--light), #ffccd5);
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--dark);
+            font-size: 2.8rem;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+            text-align: center;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .header {
+            text-align: center;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .couple-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .message-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .message-box:before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            z-index: -1;
+            border-radius: 18px;
+            opacity: 0.7;
+            transform: translateZ(-1px);
+        }
+        
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            text-align: right;
+            margin-top: 15px;
+            color: var(--primary);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            height: 180px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .music-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .music-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .player {
+            width: 100%;
+            max-width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin: 0 auto;
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 16px;
+            color: var(--primary);
+            animation: float 5s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .btn-love {
+            display: block;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            margin: 25px auto;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            width: 90%;
+            max-width: 300px;
+        }
+        
+        .btn-love:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+                margin: 15px 0;
+            }
+            
+            .couple-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .message-box {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .message {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            .signature {
+                font-size: 1.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin: 30px 0;
+            }
+            
+            .gallery-item {
+                height: 150px;
+                border-radius: 10px;
+            }
+            
+            .music-title {
+                font-size: 1.5rem;
+            }
+            
+            .player {
+                height: 180px;
+            }
+            
+            .btn-love {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .couple-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .message-box {
+                padding: 30px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .gallery-item {
+                height: 250px;
+            }
+            
+            .player {
+                height: 315px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <div class="header">
+            <img src="./img/foto5.jpeg" alt="Nós dois" class="couple-img">
+            <h1>Para Você, Meu Amor</h1>
+        </div>
+        
+        <div class="message-box">
+            <div class="message">
+                <p>Minha princesa,</p>
+                <p>Desde o momento em que nossos caminhos se cruzaram, minha vida ganhou novas cores. Você ilumina meus dias com seu sorriso e aquece meu coração com seu amor.</p>
+                <p>Cada momento ao seu lado é um presente que guardo com carinho. Sua voz é a melodia mais doce que já ouvi, seu toque é o conforto que minha alma precisa.</p>
+                <p>Prometo ser seu porto seguro, seu ombro amigo, seu amor incondicional. Em cada desafio, estarei ao seu lado; em cada vitória, celebraremos juntos.</p>
+                <p>Não existem palavras suficientes para expressar o quanto você significa para mim. Cada momento ao seu lado é especial e guardo cada um no meu coração.</p>
+                <p>Você é o amor da minha vida, minha razão para ser melhor a cada dia.</p>
+                <div class="signature">Para sempre seu,<br>Vinicius</div>
+            </div>
+        </div>
+        
+        <button class="btn-love" id="btnLove">Clique para ver o quanto te amo</button>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="./img/foto6.jpeg" alt="Nosso momento" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="./img/foto2.jpeg" alt="Amo você" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="./img/foto4.jpeg" alt="Felizes juntos" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="./img/foto7.jpeg" alt="Nosso amor" class="gallery-img">
+            </div>
+        </div>
+        
+        <div class="music-box">
+            <h2 class="music-title">Amar Não É Pecado - Luan Santana</h2>
+            <p>Essa música representa nosso amor e tudo que sinto por você</p>
+            <iframe class="player" src="https://www.youtube.com/embed/Xh7bdsJWJCU?autoplay=0&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Criar corações flutuantes
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.classList.add('heart');
+                
+                // Posição aleatória
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                
+                // Tamanho aleatório
+                const size = Math.random() * 16 + 8;
+                heart.style.fontSize = size + 'px';
+                
+                // Duração da animação aleatória
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Botão especial
+        document.getElementById('btnLove').addEventListener('click', function() {
+            alert('Eu te amo mais que tudo nesse mundo! ❤️');
+            
+            // Efeito de explosão de corações
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.classList.add('heart');
+                heart.style.left = '50%';
+                heart.style.top = '50%';
+                heart.style.position = 'fixed';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                heart.style.animation = 'float 2s linear forwards';
+                document.body.appendChild(heart);
+                
+                // Remover após a animação
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+        });
+        
+        // Inicializar
+        window.onload = function() {
+            createHearts();
+            
+            // Adicionar corações continuamente
+            setInterval(() => {
+                const hearts = document.querySelectorAll('.heart');
+                if (hearts.length < 30) {
+                    createHearts();
+                }
+            }, 3000);
+        };
+    </script>
+</body>
+</html>
